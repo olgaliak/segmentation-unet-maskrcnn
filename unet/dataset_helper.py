@@ -1,18 +1,16 @@
-
-import sys
 import os
-import math
-import random
 import numpy as np
 
 import scipy.misc
-import skimage.color
-import skimage.io
-import urllib.request
-import shutil
+
 import cv2
 import scipy.ndimage
-import matplotlib.pyplot as plt
+
+from sys import platform
+
+SLASH = '/'
+if platform == "win32":
+    SLASH = '\\'
 
 class Dataset(object):
     """The base class for dataset classes.
@@ -252,7 +250,7 @@ class Dataset(object):
             fn_img, ext = os.path.splitext(valid_mask[i])
 
             if fn_img.split('_')[-1] == 'merged':
-                shapes.append(fn_img.split('\\')[-1].split('_')[0])
+                shapes.append(fn_img.split(SLASH)[-1].split('_')[0])
             else:
                 shapes.append(fn_img.split('_')[-1])
         # Map class names to class IDs.

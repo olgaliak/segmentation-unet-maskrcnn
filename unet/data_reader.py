@@ -25,16 +25,22 @@ def get_cached_dataset(folder, amt):
     return dataset
 
 def prep_data_dor_unet(batch_size, batch_gt_masks, class_ids, config):
+   print("number of masks to load:", len(batch_gt_masks))
    masks = np.zeros((batch_size,  config.NUM_CLASSES, config.ISZ, config.ISZ))
    for i in range(len(batch_gt_masks)): # loop though masks "sets" corresponding to every image:
+       #print("GT class_ids:", class_ids[i])
        for j in range(config.NUM_CLASSES):
            mask_indx_class = class_ids[i, j]
-           mask_indx = mask_indx_class - 1
+           #print("Taking elem at position {0} from ground truth class array: {1}".format(j, mask_indx_class))
+           mask_indx = mask_indx_class - 1 #  pos 0 -- ww, pos 1 -- field, 2-terr, 3 -wsb
+           #print("mask_indx = mask_indx_class - 1  ==> result is ", mask_indx)
           # m = None -- will skip NOne assigment and se how it goes
           # print(mask_indx)
            if (mask_indx > -1):
+               #print("taking mask at position {0} from batch_gt_masks".format(j))
                m = batch_gt_masks[i, :, :, j]
                masks[i,mask_indx] = m
+               #print("Putting masks in the correct Y location:", mask_indx)
 
    return masks
 

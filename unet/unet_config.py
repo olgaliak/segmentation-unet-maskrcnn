@@ -15,9 +15,9 @@ class Config(object):
     AMT_VAL = 10
     AMT_SMALL_VAL = 10
 
-    TRAIN_DIR = 'train'
-    VAL_DIR = 'test'  
-    SMAL_VAL_DIR = 'test_small'
+    TRAIN_DIR = 'D:\\data\\LOL\\processedraw\\4_class_smaller\\train_aug'
+    VAL_DIR = 'D:\\data\\LOL\\unet\\test'  # 'D:\\data\\LOL\\processedraw\\4_class_smaller\\test'
+    SMAL_VAL_DIR = 'D:\\data\\LOL\\processedraw\\4_class_smaller\\test'
 
 
     IMAGE_PADDING = True  # currently, the False option is not supported

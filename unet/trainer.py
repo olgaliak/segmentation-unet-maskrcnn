@@ -1,4 +1,5 @@
 import os
+import time
 from keras.callbacks import ModelCheckpoint, TensorBoard
 
 from data_reader import get_patches_dataset
@@ -23,11 +24,13 @@ def train_net(weights_folder, logs_folder, progress_predict_dir, config, loss_mo
     tb_callback = TensorBoard(log_dir=logs_folder, histogram_freq=0, batch_size=config.BATCH_SIZE,
                               write_graph=True, write_grads=False, write_images=True,
                               embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None)
+    start_time = time.time()
     for i in range(config.N_STEPS):
         print("Step i", i)
         model.fit(x_trn, y_trn, batch_size= config.BATCH_SIZE, epochs= config.EPOCS, verbose=1, shuffle=True,
                   callbacks=[model_checkpoint, tb_callback], validation_data=(x_val, y_val))
 
+        print("---  Training for %s seconds ---" % (time.time() - start_time))
         score, trs = calc_jacc_img_msk(model, x_trn, y_trn, config.BATCH_SIZE, config.NUM_CLASSES)
         print('train jk', score)
 
