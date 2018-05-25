@@ -77,11 +77,11 @@ def get_vgg_7conv(ims, nchannels, n_cls):
     model = Model(img_input, conv13)
 
     # Recalculate weights on first layer
-    # conv1_weights = np.zeros((3, 3, nchannels, 64), dtype="float32")
-    # vgg = VGG16(include_top=False, input_shape=(ims, ims, 3))
-    # conv1_weights[:, :, :3, :] = vgg.get_layer("block1_conv1").get_weights()[0][:, :, :, :]
-    # bias = vgg.get_layer("block1_conv1").get_weights()[1]
-    # model.get_layer('block1_conv1').set_weights((conv1_weights, bias))
+    conv1_weights = np.zeros((3, 3, nchannels, 64), dtype="float32")
+    vgg = VGG16(include_top=False, input_shape=(ims, ims, 3))
+    conv1_weights[:, :, :3, :] = vgg.get_layer("block1_conv1").get_weights()[0][:, :, :, :]
+    bias = vgg.get_layer("block1_conv1").get_weights()[1]
+    model.get_layer('block1_conv1').set_weights((conv1_weights, bias))
     return model
 
 def get_loss_func(loss_mode):
