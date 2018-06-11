@@ -16,15 +16,15 @@ import model as modellib
 
 parser = argparse.ArgumentParser(description='mask RCNN')
 parser.add_argument('--modellog', 
-                    help='the directory of the train dataset')
+                    help='the directory of saved maskRCNN weights')
 parser.add_argument('--data', 
-                    help='the directory of the validation dataset')
+                    help='the directory of the validation jpg dataset')
 parser.add_argument('--hill', 
-                    help='the directory of the validation dataset')
+                    help='boolean parameter for loading hillshade data or not')
 parser.add_argument('--output', 
                     help='the direcotry to store object detection results')
 parser.add_argument('--epoch', nargs='+', type=int,
-                    help='the directory of the train dataset')
+                    help='the number of epoches')
 args = parser.parse_args()
 
 
@@ -55,18 +55,13 @@ if not args.epoch:
 	raise ImportError('The --epoch parameter needs to be provided')
 else:
     EPOCHES = args.epoch
-# logs = 'coco20180429T1912'
-# val_dir = '/data/a/LOLRaw/maskRCNN/4class/test
-# OUTPUT_DIR= '/home/tinzha/Projects/LandOLakes/posthack/metrics'
-# os.makedirs(OUTPUT_DIR, exist_ok = True)
 
-os.environ["CUDA_VISIBLE_DEVICES"]="2"
+#os.environ["CUDA_VISIBLE_DEVICES"]="2" # select one GPU
+
 model_dir = inputConfig.MODEL_DIR
-# EPOCHES = [50]
 
 # maskRCNN config
 mConfig = MrcnnConfig()
-# mConfig.display()
 
 print ('read validation data for maskRCNN ...')
 
