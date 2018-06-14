@@ -28,12 +28,12 @@ The data for 7 suitable practices were prepared (see description below).  For tr
 - Field Borders (1K).
 
 <!-- <img src="loldata.png" width="400"> -->
-<img width="1465" alt="loldata" src="https://user-images.githubusercontent.com/30126508/41442961-e42f5bb6-6fee-11e8-8783-84e03fe910bd.png">
+<img width="800" alt="loldata" src="https://user-images.githubusercontent.com/30126508/41442961-e42f5bb6-6fee-11e8-8783-84e03fe910bd.png">
 
 There are two image sets here: title jpg images and label masks as shown in the following figure. The left image is the tile and the middle and right images are the label masks.
 
 <!-- <img src="sampledata.png" width="400"> -->
-<img width="1028" alt="sampledata" src="https://user-images.githubusercontent.com/30126508/41442963-e706c072-6fee-11e8-9fb1-062e1d884188.png">
+<img width="800" alt="sampledata" src="https://user-images.githubusercontent.com/30126508/41442963-e706c072-6fee-11e8-9fb1-062e1d884188.png">
 
 We augmented dataset (both tiles and corresponding masks) by flipping and rotating using [Imgaug](https://github.com/aleju/imgaug).
 
@@ -44,7 +44,7 @@ We augmented dataset (both tiles and corresponding masks) by flipping and rotati
 As maskRCNN model only accept three channels images, we mreged hill shade data with areial images. We put both satellite and hill shade images in one blank image then used [gamma correction](https://www.pyimagesearch.com/2015/10/05/opencv-gamma-correction/) to highlight hill shade information on the images. 
 
 <!-- <img src="hillmerge.png" width="400"> -->
-![hillmerge](https://user-images.githubusercontent.com/30126508/41442941-c617f7f0-6fee-11e8-9dac-a7ec915ca5a1.png)
+<img width="800" alt="sampledata" src= "https://user-images.githubusercontent.com/30126508/41442941-c617f7f0-6fee-11e8-9dac-a7ec915ca5a1.png">
 
 ## Train maskRCNN
 In general, we need millions of images to train a deep learning model from scratch. As discussed in the above, we have unbalanced training dataset and the training dataset size is not enough for training a MaskRCNN model from scratch.
