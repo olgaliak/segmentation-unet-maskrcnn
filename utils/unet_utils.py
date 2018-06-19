@@ -83,7 +83,6 @@ def coeff_per_image_unet(metric_name, image_id, pred, gt_mask, gt_class_id):
     return coeff_dict
     
 def choose_trs(model, amt, x, i, treshholds, image_id, gt_mask, gt_class_id):
-        # Try few treshholds
         ave_trs = []
         for trs in treshholds:  
             pred_res =  predict_unet(model, amt, trs, x,  ISZ=224, N_Cls=4)         
@@ -101,7 +100,6 @@ def choose_trs(model, amt, x, i, treshholds, image_id, gt_mask, gt_class_id):
 
 ## main function to choose the best model and best threshold
 for model_name in model_name_list:
-    print("Model trained for 50 epocs")
     model_path = os.path.join(WEIGHTS_FLD, model_name)
     print("Loading weights from ", model_path)
     model = get_unet()
@@ -113,8 +111,6 @@ for model_name in model_name_list:
 
     for i in range(0, len(TEST_IMAGES), 10):
         batch_images_names = TEST_IMAGES[i: i+10]
-
-
         amt = len(batch_images_names)
         N_Channels = 4
         batch_images, batch_gt_class_ids, batch_gt_masks, batch_hills = unet_data_generator( dataset_val_unet, uConfig, \
