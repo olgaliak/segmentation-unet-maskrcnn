@@ -17,17 +17,17 @@ from model_eval import predict_unet, unet_img_prep
 
 #os.environ["CUDA_VISIBLE_DEVICES"]="1" # select one GPU
 
-## unet configuration
-uConfig = UnetConfig()
-dataset_val_unet = UnetDataset()
-dataset_val_unet.load_LOL(val_dir)
-dataset_val_unet.prepare()
-
 ## data and output directories
 val_dir = '<test data directory>' # test dataset
 WEIGHTS_FLD = '<unet weights directory>' # unet model weights
 OUTPUT_UNET = '<output direcotry>'
 os.makedirs(OUTPUT_UNET, exist_ok = True)
+
+## unet configuration
+uConfig = UnetConfig()
+dataset_val_unet = UnetDataset()
+dataset_val_unet.load_LOL(val_dir)
+dataset_val_unet.prepare()
 
 ## parameter settings: thresholds and model name list
 TEST_IMAGES = next(os.walk(os.path.join(val_dir, 'jpg')))[2]
