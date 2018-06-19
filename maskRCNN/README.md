@@ -8,7 +8,7 @@
 
 ## Get started
 
-[maskRCNN_training.ipynb](https://github.com/olgaliak/segmentation-unet-maskrcnn/blob/master/maskRCNN/maskRCNN_training.ipynb): train [maskRCNN model](https://github.com/matterport/Mask_RCNN) 
+[main_train.py](https://github.com/olgaliak/segmentation-unet-maskrcnn/blob/master/maskRCNN/main_train.py): train [maskRCNN model](https://github.com/matterport/Mask_RCNN) 
 
 [main_eval.py](https://github.com/olgaliak/segmentation-unet-maskrcnn/blob/master/maskRCNN/main_eval.py): evaluate new image using the built maskRCNN model. 
 
@@ -21,7 +21,7 @@ In general, we need millions of images to train a deep learning model from scrat
 
 To leverage training time and the tiny training dataset, transfer learning is performed in the project. Transfer learning is a machine learning technique where a model trained from one task is repurposed on another related task. In our case, we used Feature Pyramid Network (FPN) and a ResNet101 backbone. The [initial weights](https://github.com/matterport/Mask_RCNN/releases) that have been trained on [COCO dataset](http://cocodataset.org/#home) were used. These pre-trained weights already learned common features in natural images. Then the model was fine-tuned using the custom tiny dataset. 
 
-To run the training script:
+Before runing the training script, download [mask_rcnn_coco.h5](https://github.com/matterport/Mask_RCNN/releases/download/v2.0/mask_rcnn_coco.h5). Then execute:
 > python main_train.py --train <'training data folder'> --valid <'validation data folder'> --hill <'True/False'> --epoch <'epoch number'> --output <'output folder'>
 
 > eg. python main_train.py --train ./trData --valid ./valData --hill True --epoch 300 --output ./models

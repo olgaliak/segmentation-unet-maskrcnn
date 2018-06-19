@@ -14,8 +14,6 @@ from mrcnn_dataset import LolDataset
 import model as modellib
 
 parser = argparse.ArgumentParser(description='mask RCNN')
-# parser.add_argument('--modellog', 
-#                     help='the directory of saved maskRCNN weights')
 parser.add_argument('--train', 
                     help='the directory of the training jpg dataset')
 parser.add_argument('--valid', 
@@ -28,12 +26,6 @@ parser.add_argument('--output',
                     help='the direcotry to store object detection results')
 
 args = parser.parse_args()
-
-
-# if not args.modellog:
-# 	raise ImportError('The --modellog parameter needs to be provided (directory to model weights)')
-# else:
-# 	logs = args.modellog
 
 if not args.train:
 	raise ImportError('The --data parameter needs to be provided (directory to test dataset)')
