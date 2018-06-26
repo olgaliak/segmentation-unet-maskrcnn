@@ -1,4 +1,4 @@
-##` Unet based model training and inference
+## Unet based model training and inference
 This folder contains code for sustainbale farming practices detection using Unet.
 
 ## Prerequisites
